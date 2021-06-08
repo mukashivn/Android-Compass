@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.core.ssvapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <permission
+        android:name="android.permission.FLASHLIGHT"
+        android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
+        android:protectionLevel="normal" />
+
+    <uses-feature android:name="android.hardware.sensor.accelerometer" />
+
+    <uses-feature android:name="android.hardware.sensor.compass" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <permission
+        android:name="${applicationId}.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="${applicationId}.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <application
+        android:name="com.core.compass.ApplicationImpl"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppThemeDark"
+        tools:replace="android:theme">
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="place_your_api_key" />
+
+        <activity
+            android:name="com.core.compass.ui.main.CompassActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.core.compass.ui.setting.SetttingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeLight" />
+        <activity
+            android:name="com.core.compass.ui.theme.ThemeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeLight" />
+        <activity
+            android:name="com.core.compass.ui.themedetail.ThemeDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeLight" />
+        <activity
+            android:name="com.core.compass.ui.map.MapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeLight" />
+
+        <service android:name="com.core.compass.service.GoogleService" />
+
+        <!-- Google Play Services -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+    </application>
+
+</manifest>

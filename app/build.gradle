@@ -1,0 +1,145 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${parent.name}-${variant.name}-${variant.versionName}-${variant.versionCode}.apk"
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.android.compass"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 10
+        versionName "1.2"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("test.jks")
+            storePassword "12345678one"
+            keyAlias "key0"
+            keyPassword "12345678one"
+        }
+        release {
+            storeFile file("test.jks")
+            storePassword "12345678one"
+            keyAlias "key0"
+            keyPassword "12345678one"
+        }
+    }
+
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.yelp.com\"")
+            buildConfigField("String", "BASE_WEB", "\"https://test.com\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        stage {
+            buildConfigField("String", "BASE_URL", "\"https://api.yelp.com\"")
+            buildConfigField("String", "BASE_WEB", "\"https://test.com\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField("String", "BASE_URL", "\"https://api.yelp.com\"")
+            buildConfigField("String", "BASE_WEB", "\"https://test.com\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions{
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/library_release.kotlin_module'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // android support libraries
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.browser:browser:1.3.0'
+
+    // font
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    //Reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rootProject.rx2JavaAdapterVersion"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.convertJsonVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3LogginInterceptorVersion"
+
+    //Dagger
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    compileOnly "javax.annotation:jsr250-api:$rootProject.annoationJsr250Version"
+    implementation "javax.inject:javax.inject:$rootProject.javaxInjectVersion"
+
+    // dependencies for local unit tests
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // UI Testing
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    //ImageLoading
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+    // code generator for view
+    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+    implementation "com.google.android.gms:play-services-maps:$rootProject.googleMapServiceVersion"
+
+    //Google Play Service
+    implementation "com.google.android.gms:play-services-location:$rootProject.googleLocationServiceVersion"
+
+
+    //Multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+}

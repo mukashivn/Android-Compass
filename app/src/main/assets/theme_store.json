@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "compass_image": "compass_light",
+      "window_bg_color": "#FFFFFF",
+      "text_color": "#000000",
+      "degree_image": "ic_degree_black",
+      "arrow_image": "compass_pointer_mask",
+      "default": true,
+      "payment": true,
+      "icon_theme": "ic_theme_dark",
+      "icon_setting": "ic_setting_dark",
+      "icon_share": "ic_share_dark",
+      "icon_flash": "ic_flash_dark",
+      "icon_rate": "ic_rate_dark",
+      "icon_location": "ic_location_light",
+      "is_local": true,
+      "theme_name": "Light Style",
+      "item_bg": "bg_button_light",
+      "choose_bg": "bg_button_light_xradius",
+      "image_theme": "image_theme_light",
+      "balance_group":"gradienter_circle_lying1",
+      "balance_group_focus":"gradienter_circle_lying2"
+    },
+    {
+      "id": 2,
+      "compass_image": "compass_dark",
+      "window_bg_color": "#000000",
+      "text_color": "#FFFFFF",
+      "degree_image": "ic_degree",
+      "arrow_image": "direction_arrow",
+      "default": false,
+      "payment": true,
+      "icon_theme": "ic_theme_light",
+      "icon_setting": "ic_setting_light",
+      "icon_share": "ic_share_light",
+      "icon_flash": "ic_flash_light",
+      "icon_rate": "ic_rate_light",
+      "is_local": true,
+      "theme_name": "Dark Style",
+      "item_bg": "bg_button_dark",
+      "choose_bg": "bg_button_dark_xradius",
+      "image_theme": "image_theme_dark",
+      "icon_location": "ic_location_dark",
+      "balance_group":"gradienter_circle_lying3",
+      "balance_group_focus":"gradienter_circle_lying4"
+    }
+  ]
+}

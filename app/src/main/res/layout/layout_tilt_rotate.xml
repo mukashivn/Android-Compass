@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/tilt_rotate_view_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/shape_rotate_view_bg">
+
+    <TextView
+        android:id="@id/tv_tilt_rotate_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/direction_margin_top"
+        android:text="@string/calibrate_title"
+        android:textColor="#ff0000"
+        android:textSize="@dimen/calibrate_title_text_size" />
+
+    <com.core.compass.ui.custom.RotateView
+        android:id="@id/img_tilt_rotate"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/calibrate_tip_bottom_margin"
+        android:text="@string/calibrate_tip"
+        android:textColor="#ff0000"
+        android:textSize="@dimen/calibrate_tip_text_size" />
+
+</RelativeLayout>

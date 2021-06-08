@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">1989210518074810</string>
+    <string name="heyzap_pub_id">593d9f97063bec00f3e0f60214a2b5be</string>
+    <string name="app_lovin_sdkkey">iVth1Xns1vXaWlDJGqmE995884znPLc6rUpt1ai2TFc--qHFe2ToBZwKeu53DiA2C-vDTcF0ss_rfH5JJZ5V80</string>
+    <string name="sku_remove_ads">remove_ads</string>
+    <string name="sku_buy_a_beer">buy_a_beer</string>
+    <string name="in_app_support">In-app purchase is not supported by your device</string>
+</resources>
